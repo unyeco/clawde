@@ -11,8 +11,9 @@ import 'package:go_router/go_router.dart';
 import 'package:clawde/router.dart';
 import 'package:clawde/services/updater_service.dart';
 import 'package:clawde/features/settings/remote_access_settings.dart';
+import 'package:clawde/features/settings/clawde_plus_settings.dart';
 
-enum _Section { connection, remoteAccess, providers, models, appearance, resources, doctor, about }
+enum _Section { connection, remoteAccess, providers, models, appearance, resources, clawdePlus, doctor, about }
 
 class SettingsScreen extends ConsumerStatefulWidget {
   const SettingsScreen({super.key});
@@ -73,6 +74,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               _Section.models => const _ModelsPane(),
               _Section.appearance => const _AppearancePane(),
               _Section.resources => const _ResourcesPane(),
+              _Section.clawdePlus => const ClawdePlusSettings(),
               _Section.doctor => const _DoctorPane(),
               _Section.about => const _AboutPane(),
             },
@@ -103,6 +105,7 @@ class _SectionTile extends StatelessWidget {
         _Section.models => 'Models',
         _Section.appearance => 'Appearance',
         _Section.resources => 'Resources',
+        _Section.clawdePlus => 'ClawDE+',
         _Section.doctor => 'Doctor',
         _Section.about => 'About',
       };
@@ -114,6 +117,7 @@ class _SectionTile extends StatelessWidget {
         _Section.models => Icons.auto_awesome_mosaic,
         _Section.appearance => Icons.palette_outlined,
         _Section.resources => Icons.memory,
+        _Section.clawdePlus => Icons.workspace_premium_outlined,
         _Section.doctor => Icons.health_and_safety_outlined,
         _Section.about => Icons.info_outline,
       };
