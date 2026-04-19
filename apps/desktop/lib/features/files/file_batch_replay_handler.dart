@@ -13,6 +13,16 @@ import 'package:clawd_core/clawd_core.dart';
 
 /// A single file operation entry from a `file.batchReplay` notification.
 class ReplayedFileOp {
+
+  factory ReplayedFileOp.fromJson(Map<String, dynamic> json) {
+    return ReplayedFileOp(
+      op: json['op'] as String? ?? '',
+      path: json['path'] as String? ?? '',
+      sessionId: json['sessionId'] as String? ?? '',
+      timestamp: json['timestamp'] as String? ?? '',
+      newPath: json['newPath'] as String?,
+    );
+  }
   const ReplayedFileOp({
     required this.op,
     required this.path,
@@ -35,16 +45,6 @@ class ReplayedFileOp {
 
   /// Destination path for "rename" operations; null otherwise.
   final String? newPath;
-
-  factory ReplayedFileOp.fromJson(Map<String, dynamic> json) {
-    return ReplayedFileOp(
-      op: json['op'] as String? ?? '',
-      path: json['path'] as String? ?? '',
-      sessionId: json['sessionId'] as String? ?? '',
-      timestamp: json['timestamp'] as String? ?? '',
-      newPath: json['newPath'] as String?,
-    );
-  }
 }
 
 /// State exposed by [FileBatchReplayNotifier].

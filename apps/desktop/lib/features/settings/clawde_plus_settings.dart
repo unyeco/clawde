@@ -43,7 +43,7 @@ class ClawdePlusSettings extends ConsumerWidget {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _Header(
+            const _Header(
               title: 'ClawDE+',
               subtitle: 'Subscription status, cloud sync, and team features',
             ),
@@ -280,7 +280,7 @@ class _SyncToggle extends StatelessWidget {
             Switch(
               value: enabled,
               onChanged: onChanged,
-              activeColor: ClawdTheme.claw,
+              activeThumbColor: ClawdTheme.claw,
             ),
           ],
         ),
@@ -321,15 +321,15 @@ class _TeamSection extends StatelessWidget {
                   : null,
               borderRadius: const BorderRadius.vertical(
                   top: Radius.circular(8)),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
+              child: const Padding(
+                padding: EdgeInsets.symmetric(
                     horizontal: 16, vertical: 14),
                 child: Row(
                   children: [
-                    const Icon(Icons.group_outlined,
+                    Icon(Icons.group_outlined,
                         size: 18, color: Colors.white54),
-                    const SizedBox(width: 12),
-                    const Expanded(
+                    SizedBox(width: 12),
+                    Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -349,7 +349,7 @@ class _TeamSection extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const Icon(Icons.chevron_right,
+                    Icon(Icons.chevron_right,
                         size: 16, color: Colors.white38),
                   ],
                 ),
@@ -388,7 +388,7 @@ class _TeamSection extends StatelessWidget {
                   Switch(
                     value: sharedSessionsEnabled,
                     onChanged: onSharedSessionsChanged,
-                    activeColor: ClawdTheme.claw,
+                    activeThumbColor: ClawdTheme.claw,
                   ),
                 ],
               ),
