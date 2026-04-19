@@ -41,6 +41,12 @@ target/
 .dart_tool/
 *.g.dart
 *.freezed.dart
+pubspec_overrides.yaml
+.melos_tool/
+
+# Node (some Flutter web tooling pulls these in)
+node_modules/
+dist/
 
 # Flutter — plugin caches
 .flutter-plugins

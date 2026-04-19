@@ -13,7 +13,7 @@ ClawDE is open source and welcomes contributions.
 
 ## Contributing Code
 
-See [CONTRIBUTING.md](../CONTRIBUTING.md) for the full guide. Short version:
+See the [[Contributing]] wiki page for the full guide. Short version:
 
 1. Fork → branch → code → `cargo test && flutter test`
 2. Submit PR — maintainers review within a few days
@@ -45,11 +45,11 @@ Ratings feed into the trending algorithm on the pack showcase page.
 
 ## Code of Conduct
 
-All participants must follow our [Code of Conduct](../CODE_OF_CONDUCT.md). Reports go to conduct@clawde.io.
+All participants must follow our [[Code of Conduct]]. Reports go to conduct@clawde.io.
 
 ## Security
 
-Report vulnerabilities privately — see [SECURITY.md](../SECURITY.md). Do not open public issues for security bugs.
+Report vulnerabilities privately — see the [Security Policy](../SECURITY.md). Do not open public issues for security bugs.
 
 ## Sponsorship
 

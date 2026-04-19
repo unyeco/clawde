@@ -49,6 +49,10 @@ cd daemon && cargo build
 - `fix/<name>` — bug fixes
 - `chore/<name>` — tooling, deps, docs
 
+## Commit style
+
+Conventional commits: `feat:`, `fix:`, `chore:`, `docs:`, `test:` (e.g. `feat(ui): add ChatBubble`).
+
 ## Pull requests
 
 1. Fork and create a branch from `main`
