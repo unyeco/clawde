@@ -35,7 +35,6 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: stable
-          flutter-version: 3.27.x
           cache: true
 
       - name: Bootstrap melos workspace
@@ -82,7 +81,6 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: stable
-          flutter-version: 3.27.x
           cache: true
 
       - name: Bootstrap melos
@@ -115,7 +113,6 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: stable
-          flutter-version: 3.27.x
           cache: true
 
       - name: Bootstrap melos

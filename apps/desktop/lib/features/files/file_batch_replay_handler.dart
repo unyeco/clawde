@@ -92,7 +92,7 @@ class FileBatchReplay extends AutoDisposeAsyncNotifier<FileBatchReplayState> {
   Future<FileBatchReplayState> build() async {
     final daemon = ref.watch(daemonProvider);
     // Cancel any prior subscription when the provider rebuilds.
-    _subscription?.cancel();
+    await _subscription?.cancel();
     _subscription = null;
 
     if (!daemon.isConnected) {
