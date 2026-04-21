@@ -14,13 +14,13 @@ import 'package:flutter/material.dart';
 ///     onLearnMore: () => launchUrl(Uri.parse('https://nself.org/legal/ai-aup')),
 ///   )
 class AIDisclosureBanner extends StatelessWidget {
-  /// Called when the user clicks the "AI policy" link.
-  final VoidCallback? onLearnMore;
-
   const AIDisclosureBanner({
     super.key,
     this.onLearnMore,
   });
+
+  /// Called when the user clicks the "AI policy" link.
+  final VoidCallback? onLearnMore;
 
   @override
   Widget build(BuildContext context) {
