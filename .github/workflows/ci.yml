@@ -16,6 +16,7 @@ jobs:
   dart:
     name: Dart · analyze + test
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     defaults:
       run:
         working-directory: apps
@@ -43,6 +44,7 @@ jobs:
   flutter-desktop:
     name: Flutter · desktop build (macOS)
     runs-on: macos-latest
+    timeout-minutes: 15
     defaults:
       run:
         working-directory: apps
@@ -71,6 +73,7 @@ jobs:
   rust:
     name: Rust · clippy + test
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
 
@@ -101,7 +104,6 @@ jobs:
           cargo install cargo-audit --quiet 2>/dev/null || true
           cargo audit --deny=unmaintained --deny=yanked
         working-directory: apps/daemon
-        continue-on-error: true
 
       - name: Check secret logging
         run: bash scripts/check-secret-logging.sh src
@@ -111,6 +113,7 @@ jobs:
   rust-deny:
     name: Rust · cargo deny
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
 
@@ -126,6 +129,7 @@ jobs:
   policy-lint:
     name: Rust · policy tests + instruction lint
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
@@ -149,20 +153,21 @@ jobs:
           ./target/release/clawd start --data-dir "$CLAWD_DATA_DIR" --port 14300 &
           CLAWD_PID=$!
           sleep 2
-          ./target/release/clawd policy test --ci --port 14300 || true
+          ./target/release/clawd policy test --ci --port 14300
+          STATUS=$?
           kill $CLAWD_PID 2>/dev/null || true
+          exit $STATUS
         working-directory: apps/daemon
-        continue-on-error: true
 
       - name: Run policy + snapshot unit tests (IL.T04)
         run: cargo test --lib instructions snapshot policy
         working-directory: apps/daemon
-        continue-on-error: true
 
   # ─── Sprint ZZ: Benchmark regression gate (EH.T06) ───────────────
   bench-gate:
     name: Rust · benchmark regression gate
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     if: github.event_name == 'pull_request'
     steps:
       - uses: actions/checkout@v4
@@ -192,15 +197,17 @@ jobs:
           CLAWD_PID=$!
           sleep 2
           BASE_REF="${{ github.event.pull_request.base.sha }}"
-          ./target/release/clawd bench compare --base "$BASE_REF" --port 14301 || true
+          ./target/release/clawd bench compare --base "$BASE_REF" --port 14301
+          STATUS=$?
           kill $CLAWD_PID 2>/dev/null || true
+          exit $STATUS
         working-directory: apps/daemon
-        continue-on-error: true
 
   # ─── Rust format check ────────────────────────────────────────────
   rust-fmt:
     name: Rust · rustfmt
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
