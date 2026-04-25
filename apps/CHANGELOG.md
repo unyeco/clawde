@@ -24,3 +24,14 @@ Follows [Keep a Changelog](https://keepachangelog.com/) format.
 
 ### Changed
 - Repository transferred from unyeco-org to nself-org
+
+## [1.0.12] - 2026-04-25
+
+### Added
+- Flutter ship-ready: l10n ARB files generated for all supported locales.
+- Brand assets updated to v1.0.12 icon set.
+- Auth SDK migration to nSelf auth SDK client.
+- ClawDE bundle price updated to $0.99/mo / $9.99/yr in license prompt (supersedes $1.99/$19.99 from P95).
+
+### Changed
+- Minimum nSelf CLI version requirement bumped to v1.0.12.
