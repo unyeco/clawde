@@ -1,5 +1,5 @@
-// Conditional widget that renders [child] when ClawDE+ is active, or an
-// upgrade prompt card when it is not.
+// Conditional widget that renders [child] when the ClawDE bundle is active,
+// or an upgrade prompt card when it is not.
 //
 // Usage:
 //   ClawdePlusGate(
@@ -13,8 +13,8 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:clawd_core/clawd_core.dart';
 import 'package:clawd_ui/clawd_ui.dart';
 
-/// Shows [child] when ClawDE+ is active on the connected daemon's license.
-/// Shows [_UpgradePromptCard] when ClawDE+ is not active.
+/// Shows [child] when the ClawDE bundle is active on the connected daemon's license.
+/// Shows [_UpgradePromptCard] when the ClawDE bundle is not active.
 ///
 /// The gate reads from [licenseProvider] — the same provider used by
 /// [ClawdePlusSettings] — so the displayed state is always consistent with
@@ -51,7 +51,7 @@ class ClawdePlusGate extends ConsumerWidget {
 
 // ── Upgrade prompt card ───────────────────────────────────────────────────────
 
-/// Displayed by [ClawdePlusGate] when ClawDE+ is not active.
+/// Displayed by [ClawdePlusGate] when the ClawDE bundle is not active.
 ///
 /// Shows the feature name, a brief explanation, and a CTA button that opens
 /// the ClawDE+ purchase page.
@@ -60,7 +60,7 @@ class _UpgradePromptCard extends StatelessWidget {
 
   final String featureName;
 
-  static const _upgradeUrl = 'https://nself.org/clawde/plus';
+  static const _upgradeUrl = 'https://clawde.nself.org/checkout?plan=monthly';
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +95,7 @@ class _UpgradePromptCard extends StatelessWidget {
               const SizedBox(width: 12),
               const Expanded(
                 child: Text(
-                  'ClawDE+ Required',
+                  'ClawDE Bundle Required',
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
@@ -107,7 +107,7 @@ class _UpgradePromptCard extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           Text(
-            '$featureName requires ClawDE+.',
+            '$featureName requires the ClawDE bundle.',
             style: const TextStyle(
               fontSize: 13,
               color: Colors.white70,
@@ -115,7 +115,7 @@ class _UpgradePromptCard extends StatelessWidget {
           ),
           const SizedBox(height: 4),
           const Text(
-            'Upgrade to unlock cloud sync, team features, and more.',
+            'Get the ClawDE bundle to unlock cloud sync, team features, and more.',
             style: TextStyle(
               fontSize: 12,
               color: Colors.white38,
@@ -134,7 +134,7 @@ class _UpgradePromptCard extends StatelessWidget {
                   const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
             ),
             child: const Text(
-              'Get ClawDE+ for \$1.99/mo',
+              'Get ClawDE Bundle \$0.99/mo',
               style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
             ),
           ),
