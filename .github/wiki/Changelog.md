@@ -7,7 +7,7 @@ Versions follow [Semantic Versioning](https://semver.org/).
 
 ---
 
-## [Unreleased] — v0.2.0 (v1.1.0 ecosystem)
+## [0.2.0] — 2026-05-15 (v1.1.0 ecosystem)
 
 ClawDE bundle now purchasable at nself.org/products/clawde. Desktop + mobile apps updated for license gate flow.
 
