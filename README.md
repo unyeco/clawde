@@ -4,7 +4,7 @@ The host-first AI development environment.
 
 One daemon. Every provider. Any device.
 
-[![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)](https://github.com/nself-org/clawde/releases)
+[![Version](https://img.shields.io/badge/version-1.1.1-blue.svg)](https://github.com/nself-org/clawde/releases)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Build](https://github.com/nself-org/clawde/actions/workflows/test.yml/badge.svg)](https://github.com/nself-org/clawde/actions/workflows/test.yml)
 <!-- VERSION_BADGE -->
@@ -76,8 +76,7 @@ site/         # Website (clawde.io)
 ### macOS
 
 ```bash
-brew tap nself-org/clawde
-brew install clawd
+brew install nself-org/clawde/clawde
 ```
 
 ### macOS / Linux (one-liner)

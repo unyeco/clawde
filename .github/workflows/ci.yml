@@ -148,6 +148,8 @@ jobs:
         working-directory: apps/daemon
 
       - name: Start daemon + run policy tests (PT.T04)
+        env:
+          CLAWD_SKIP_SYSTEMD: "1"
         run: |
           CLAWD_DATA_DIR=$(mktemp -d)
           ./target/release/clawd start --data-dir "$CLAWD_DATA_DIR" --port 14300 &

@@ -1,0 +1,60 @@
+name: Desktop Windows Build
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+concurrency:
+  group: desktop-windows-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: windows-2022
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.NSELF_PAT }}
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 'stable'
+          channel: 'stable'
+          cache: true
+
+      - name: Install Flutter deps
+        working-directory: apps/desktop
+        run: flutter pub get
+
+      - name: Enable Windows desktop
+        run: flutter config --enable-windows-desktop
+
+      - name: Build Flutter Windows
+        working-directory: apps/desktop
+        run: flutter build windows --release
+
+      # SSL.com eSigner EV code-signing (no-op until SSL_COM_USERNAME org secret is set).
+      # Signs the Flutter Windows runner executable (PE format, supported by eSigner).
+      # Rate limit: 10 signs/min. One exe per tag run = well within limit.
+      # Note: the 'secrets' context is valid here; VS Code linter false-positive on step-level if:.
+      - name: Sign Windows exe (EV, SSL.com eSigner)
+        if: ${{ secrets.SSL_COM_USERNAME != '' }}
+        uses: SSLcom/esigner-codesign@v1.3.2
+        with:
+          command: sign
+          username: ${{ secrets.SSL_COM_USERNAME }}
+          password: ${{ secrets.SSL_COM_PASSWORD }}
+          credential_id: ${{ secrets.SSL_COM_CREDENTIAL_ID }}
+          totp_secret: ${{ secrets.SSL_COM_TOTP_SECRET }}
+          file_path: apps/desktop/build/windows/x64/runner/Release/clawde.exe
+          override: true
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: desktop-windows-x64
+          path: apps/desktop/build/windows/x64/runner/Release/
+          retention-days: 30

@@ -7,6 +7,14 @@ Versions follow [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [Unreleased]
+
+### Added
+
+- **Windows desktop EV code-signing (S20):** `desktop-windows.yml` added — builds Flutter desktop exe on Windows runner and wires `SSLcom/esigner-codesign@v1.3.2` for EV Organization Validation code-signing of `apps/desktop/build/windows/x64/runner/Release/clawde.exe`. Signing is conditional on `SSL_COM_USERNAME` org secret; CI stays green when secrets absent.
+
+---
+
 ## [0.2.0] — 2026-05-15 (v1.1.0 ecosystem)
 
 ClawDE bundle now purchasable at nself.org/products/clawde. Desktop + mobile apps updated for license gate flow.
