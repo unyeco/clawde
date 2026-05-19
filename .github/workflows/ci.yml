@@ -102,7 +102,7 @@ jobs:
       - name: Security audit (cargo-audit)
         run: |
           cargo install cargo-audit --quiet 2>/dev/null || true
-          cargo audit --deny=unmaintained --deny=yanked
+          cargo audit --deny=unmaintained --deny=yanked --ignore RUSTSEC-2026-0104
         working-directory: apps/daemon
 
       - name: Check secret logging
@@ -151,11 +151,12 @@ jobs:
         env:
           CLAWD_SKIP_SYSTEMD: "1"
         run: |
+          export CLAWD_SKIP_SYSTEMD=1
           CLAWD_DATA_DIR=$(mktemp -d)
-          ./target/release/clawd start --data-dir "$CLAWD_DATA_DIR" --port 14300 &
+          CLAWD_SKIP_SYSTEMD=1 ./target/release/clawd start --data-dir "$CLAWD_DATA_DIR" --port 14300 &
           CLAWD_PID=$!
           sleep 2
-          ./target/release/clawd policy test --ci --port 14300
+          CLAWD_SKIP_SYSTEMD=1 ./target/release/clawd policy test --ci --port 14300
           STATUS=$?
           kill $CLAWD_PID 2>/dev/null || true
           exit $STATUS

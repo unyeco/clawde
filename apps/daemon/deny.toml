@@ -45,7 +45,12 @@ db-urls = ["https://github.com/rustsec/advisory-db"]
 unmaintained = "none"
 yanked = "deny"
 
-ignore = []
+# RUSTSEC-2026-0104: Reachable panic in rustls certificate revocation list parsing.
+# Transitive dependency via webpki/tokio-rustls; clawd does not perform CRL parsing.
+# Tracked for upstream patch — re-evaluate on next Cargo.lock refresh.
+ignore = [
+    { id = "RUSTSEC-2026-0104", reason = "Transitive rustls dep; clawd does not perform CRL parsing. Tracked for upstream fix." },
+]
 
 [sources]
 # Only allow crates from crates.io and the git repos explicitly used

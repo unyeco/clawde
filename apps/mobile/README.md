@@ -4,7 +4,7 @@ Mobile companion for ClawDE: review sessions, approve or deny remote agent plans
 
 ## Description
 
-This is the Flutter mobile client for ClawDE. It pairs with a `clawd` daemon (running on your laptop, home lab, or ClawDE Cloud) and lets you monitor sessions, reply to agents, and approve worktree changes from your phone. Cloud sync requires the **ClawDE+ Bundle** (per F06 in `~/Sites/nself/.claude/docs/sport/F06-BUNDLE-INVENTORY.md`); local LAN pairing works free.
+This is the Flutter mobile client for ClawDE. It pairs with a `clawd` daemon (running on your laptop, home lab, or ClawDE Cloud) and lets you monitor sessions, reply to agents, and approve worktree changes from your phone. Cloud sync requires the **ClawDE Bundle** (per F06 in `~/Sites/nself/.claude/docs/sport/F06-BUNDLE-INVENTORY.md`); local LAN pairing works free.
 
 For the full ClawDE README and architecture overview, see [../../README.md](../../README.md). For ecosystem context, see the PRI at `~/Sites/nself/clawde/.claude/CLAUDE.md`.
 
@@ -82,9 +82,9 @@ cd apps/mobile
 flutter test
 ```
 
-## ClawDE+ Bundle
+## ClawDE Bundle
 
-Cloud sync (review sessions from any device, server-side history, push notifications when an agent finishes) requires the **ClawDE+ Bundle** ($1.99/mo / $19.99/yr per F07-PRICING-TIERS). The free tier supports LAN-paired daemons only. License activation happens through `clawd license set ...` on the daemon host; the mobile app inherits that license over the paired connection.
+Cloud sync (review sessions from any device, server-side history, push notifications when an agent finishes) requires the **ClawDE Bundle** ($0.99/mo / $9.99/yr per F07-PRICING-TIERS). The free tier supports LAN-paired daemons only. License activation happens through `clawd license set ...` on the daemon host; the mobile app inherits that license over the paired connection.
 
 ## License
 
