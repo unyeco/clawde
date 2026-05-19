@@ -1086,7 +1086,7 @@ async fn main() -> Result<()> {
         }
         Some(Command::Policy { action }) => {
             let config =
-                DaemonConfig::new(None, args.data_dir, Some("error".to_string()), None, None);
+                DaemonConfig::new(args.port, args.data_dir, Some("error".to_string()), None, None);
             let port = config.port;
             let data_dir = config.data_dir.clone();
             match action {
@@ -1110,7 +1110,7 @@ async fn main() -> Result<()> {
         }
         Some(Command::Bench { action }) => {
             let config =
-                DaemonConfig::new(None, args.data_dir, Some("error".to_string()), None, None);
+                DaemonConfig::new(args.port, args.data_dir, Some("error".to_string()), None, None);
             let port = config.port;
             let data_dir = config.data_dir.clone();
             match action {
