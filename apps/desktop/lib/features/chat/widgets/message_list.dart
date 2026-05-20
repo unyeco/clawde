@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:clawd_core/clawd_core.dart';
 import 'package:clawd_proto/clawd_proto.dart';
@@ -203,7 +204,7 @@ class _MessageListState extends ConsumerState<MessageList> {
               padding: const EdgeInsets.symmetric(vertical: 8),
               itemCount: items.length,
               // Keep 1500px of items pre-rendered above/below viewport.
-              cacheExtent: 1500,
+              scrollCacheExtent: const ScrollCacheExtent.pixels(1500),
               // Disable automatic keepAlives: messages are stateless,
               // no need to retain widget state when scrolled off-screen.
               addAutomaticKeepAlives: false,
